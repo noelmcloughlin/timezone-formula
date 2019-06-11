@@ -12,6 +12,7 @@ timezone_setting:
 timezone_packages:
   pkg.installed:
     - name: {{ confmap.pkgname }}
+    - unless: {{ grains.os == 'MacOS' }}
 
 timezone_symlink:
   file.symlink:
@@ -20,3 +21,4 @@ timezone_symlink:
     - force: true
     - require:
       - pkg: {{ confmap.pkgname }}
+    - unless: {{ grains.os == 'MacOS' }}
